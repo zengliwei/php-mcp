@@ -1,6 +1,6 @@
 <?php
 
-namespace McpClient;
+namespace Lib\Client;
 
 use PhpMcp\Client\Enum\ConnectionStatus;
 use PhpMcp\Client\Event;

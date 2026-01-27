@@ -1,6 +1,6 @@
 <?php
 
-namespace McpClient;
+namespace Lib\Client;
 
 use Evenement\EventEmitterTrait;
 use Exception;

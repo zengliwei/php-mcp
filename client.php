@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 require __DIR__ . '/vendor/autoload.php';
 
-use McpClient\Client;
-use McpClient\Logger;
-use McpClient\TransportFactory;
+use Lib\Client\Client;
+use Lib\Client\TransportFactory;
+use Lib\Logger;
 use PhpMcp\Client\ClientConfig;
 use PhpMcp\Client\Enum\TransportType;
-use PhpMcp\Client\ServerConfig;
 use PhpMcp\Client\Model\Capabilities;
+use PhpMcp\Client\ServerConfig;
 use React\EventLoop\StreamSelectLoop;
 
 function debug($content): void
@@ -25,7 +25,7 @@ try {
         name: 'MCP Client',
         version: '1.0',
         capabilities: Capabilities::forClient(),
-        logger: new Logger(),
+        logger: new Logger('client.log'),
         cache: null,
         eventDispatcher: null,
         loop: $loop = new StreamSelectLoop()
