@@ -35,7 +35,7 @@ try {
             transport: TransportType::Stdio,
             timeout: 10,
             command: 'php8',
-            args: [__DIR__ . '/server.php']
+            args: [__DIR__ . '/server-stdio.php']
         ),
         $clientCfg,
         new TransportFactory($clientCfg)
