@@ -9,7 +9,7 @@ use Mcp\Server\Transport\StdioTransport;
 /**
  * @see https://github.com/modelcontextprotocol/php-sdk
  */
-$response = Server::builder()
+Server::builder()
     ->setServerInfo('MCP Server', '1.0.0')
     ->setLogger(new Logger('server.log'))
     ->setDiscovery(__DIR__, ['mcp-server'])

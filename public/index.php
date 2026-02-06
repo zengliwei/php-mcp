@@ -4,26 +4,8 @@ define('ROOT', dirname(__DIR__));
 
 require_once ROOT . '/vendor/autoload.php';
 
-use GuzzleHttp\Psr7\Response;
-use Http\Discovery\Psr17Factory;
-use Lib\Logger;
-use Mcp\Server;
-use Mcp\Server\Session\FileSessionStore;
-use Mcp\Server\Transport\StreamableHttpTransport;
+$server = filter_input_array(INPUT_SERVER);
 
-/**
- * @var Response $response
- * @see https://github.com/modelcontextprotocol/php-sdk
- */
-$response = Server::builder()
-    ->setServerInfo('MCP Server', '1.0.0')
-    ->setLogger(new Logger('server.log'))
-    ->setDiscovery(ROOT, ['mcp-server'])
-    ->setSession(new FileSessionStore(ROOT . '/var/sessions'))
-    ->build()
-    ->run(new StreamableHttpTransport((new Psr17Factory())->createServerRequestFromGlobals()));
-
-foreach ($response->getHeaders() as $k => $v) {
-    header("$k: {$v[0]}");
+if ($server['REQUEST_URI'] == '/server/sse') {
+    require ROOT . '/server-http.php';
 }
-echo $response->getBody()->getContents();
