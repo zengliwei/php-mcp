@@ -1,8 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
-require __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 use Lib\Client\Client;
 use Lib\Client\TransportFactory;
@@ -15,7 +13,7 @@ use React\EventLoop\StreamSelectLoop;
 
 function debug($content): void
 {
-    $logFile = __DIR__ . '/logs/client.log';
+    $logFile = __DIR__ . '/logs/debug.log';
     is_dir(($dir = dirname($logFile))) || mkdir($dir, 0755, true);
     file_put_contents($logFile, date('[Y-m-d H:i:s] ') . print_r($content, true) . "\n", FILE_APPEND);
 }
